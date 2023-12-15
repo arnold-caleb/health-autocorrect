@@ -1,4 +1,4 @@
-# Image-Conditioned Autocorrection in Medical Reporting (In submission)
+# Image-Conditioned Autocorrection in Medical Reporting
 
 ## arXiv
 
