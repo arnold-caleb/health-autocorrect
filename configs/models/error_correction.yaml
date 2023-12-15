@@ -1,0 +1,26 @@
+model:
+  type: "GPT2LMHeadModel"
+  params:
+    pretrained: "gpt2"
+
+optimizer:
+  type: "AdamW"
+  params:
+    lr: 1e-5
+
+training:
+  epochs: 3
+  save_path: '/proj/vondrick/aa870/error_correction_checkpoints'
+  log: 5
+
+data:
+  csv_file: '/home/aa4870/spring/physionet.org/files/mimic-cxr-jpg/2.0.0/data/error_correction.csv'
+
+main: 
+  seed: 42
+  epochs: 3
+  
+
+wandb:
+  project: "Error correction by finetuning GPT2"
+  name: "July 7th"

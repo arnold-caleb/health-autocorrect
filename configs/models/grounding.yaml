@@ -1,0 +1,67 @@
+# grounding.yaml
+
+# Main configurations
+main:
+  seed: 42
+  checkpoint_folder: "/proj/vondrick/aa4870/checkpoints_original_biomegatron"
+  best_model_name: "/home/aa4870/spring/physionet.org/files/mimic-cxr-jpg/2.0.0/weights/best_model_weights_grounding_original_biomegatron.pth"
+  eval_data: "/home/aa4870/spring/physionet.org/files/mimic-cxr-jpg/2.0.0/data/error_test.csv"
+  batch_size: 64
+  learning_rate: 1e-3
+  epochs: 20 # this is when we get the highest error accuracy 63%
+  patience: 20
+  checkpoint_interval: 10
+  embed_dim: 2560
+  alsentzer: "emilyalsentzer/Bio_ClinicalBERT" 
+  gatortron_medium: "UFNLP/gatortron-medium" # https://www.nature.com/articles/s41746-022-00742-2/tables/2
+  gatortron_large: "UFNLP/gatortron-large" # evaluation scores higher than bioBERT, clinicalBERT, bioMegatron # embed dim of gatortron is 2560...
+  biomegatron: "EMBO/BioMegatron345mUncased"
+  embed_dim_gatortron: 2560
+  embed_dim_biomegatron: 1024
+  device_ids: [0, 1, 2, 3, 4, 5, 6, 7]  
+  port_number: 1763
+
+
+# Data transformations
+data_transform:
+  _target_: "dataset.DataTransform"
+  resize: 224
+  center_crop: 224
+  random_horizontal_flip_p: 0.5
+  normalize:
+    mean: [0.485, 0.456, 0.406]
+    std: [0.229, 0.224, 0.225]
+
+# DataLoader configurations
+dataloader:
+  shuffle: true
+  num_workers: 8
+
+# Dataset configurations
+dataset:
+  _target_: "dataset.MimicCxrDataset"
+
+# Optimizer and Scheduler configurations
+optimizer:
+  _target_: "torch.optim.AdamW"
+  lr: 1e-4
+scheduler:
+  _target_: "torch.optim.lr_scheduler.CosineAnnealingLR"
+  T_max: 150
+
+# Loss configurations
+ntxent_loss:
+  _target_: "loss.NTXentLoss"
+  temperature: 0.1
+  device: "cuda:0" # device can be overwritten in code if cuda is not available
+
+# WandB configurations
+wandb:
+  project: "Image Text Grounding Project Summer 2023 (original)"
+  name: "Nov 2"
+
+# Model configurations
+model:
+  _target_: "models.ImageTextGroundingModelHierarchical"
+  embed_dim: 1024
+  llm: "EMBO/BioMegatron345mUncased"
