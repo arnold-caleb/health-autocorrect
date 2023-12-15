@@ -64,4 +64,4 @@ wandb:
 model:
   _target_: "models.ImageTextGroundingModelHierarchical"
   embed_dim: 1024
-  llm: "EMBO/BioMegatron345mUncased"
+  llm: "UFNLP/gatortron-large" # "EMBO/BioMegatron345mUncased"
