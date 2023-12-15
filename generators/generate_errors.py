@@ -29,7 +29,7 @@ def suitable_prompt(text):
 
 def generate_errors(text, num_alternatives=1):
     alternatives = []
-    openai.api_key = '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'  
+    openai.api_key = ''  
 
     for _ in range(num_alternatives):
         response = openai.Completion.create(

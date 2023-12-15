@@ -34,7 +34,7 @@ from nltk.translate.bleu_score import sentence_bleu
 import Levenshtein
 
 import openai
-api_key = "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"
+api_key = ""
 
 from rouge import Rouge
 import gensim.downloader as api
@@ -97,7 +97,7 @@ def compute_metrics(refined_text, ground_truth):
     # Return your metrics along with the new ones
     return edit_distance, bleu_score, rouge_scores#, wmd_distance, jaccard_sim, cosine_sim, cosine_sim_use#, cosine_sim_bert
 
-api_key = "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"
+api_key = ""
 def refine_report_with_gpt4(original_report, text_format):
     openai.api_key = api_key 
 

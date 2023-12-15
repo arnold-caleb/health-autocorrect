@@ -29,7 +29,7 @@ def suitable_prompt(text):
 
 def alternative_desc(text, num_alternatives=5):
     alternatives = []
-    openai.api_key = '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'  
+    openai.api_key = ''  
 
     for _ in range(num_alternatives):
         response = openai.Completion.create(
