@@ -1,12 +1,12 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='image_text_grounding',
+    name='health-autocorrect',
     version='0.1.0',
-    description='An image-text grounding model for medical images and reports',
+    description='Image-Conditioned Autocorrection in medical reporting',
     author='Arnold Caleb Asiimwe',
     author_email='aa4870@columbia.edu',
-    url='https://github.com/arnold-caleb/image-text-grounding.git',
+    url='https://github.com/arnold-caleb/health-autocorrect',
     packages=find_packages(),
     install_requires=[
         'torch>=1.9.0',

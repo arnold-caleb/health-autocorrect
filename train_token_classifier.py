@@ -30,7 +30,8 @@ def main(cfg: DictConfig) -> None:
     tokenizer = AutoTokenizer.from_pretrained(cfg.main.biomegatron)
     dataloaders = create_dataloaders_error_identification(cfg.main.batch_size, cfg.data_transform, tokenizer)
 
-    model = ImageTextCorrection2.from_config(cfg, device)
+    # model = ImageTextCorrection.from_config(cfg, device) # concat approach
+    model = ImageTextCorrection2.from_config(cfg, device) # pool and append approach depending on what you uncomment
     
     optimizer, scheduler = setup_optimizer_scheduler(cfg, model)
 
