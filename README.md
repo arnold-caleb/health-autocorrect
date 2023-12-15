@@ -1,7 +1,4 @@
 # Image-Conditioned Autocorrection in Medical Reporting
-
-## arXiv
-
 https://cs.columbia.edu/~aa4870/health-autocorrect.pdf
 
 ## Abstract
